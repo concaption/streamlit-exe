@@ -8,7 +8,7 @@ Install packages as follows:
 ```
 npm install
 ```
-Then create a directory to contain the application files, e.g., streamlit_app. So the path of the main app file looks like streamlit_app/streamlit_app.py
+Then create a directory to contain the application files, e.g., app. So the path of the main app file looks like app/app.py
 
 Run the dump command to create the ./build folder.
 
