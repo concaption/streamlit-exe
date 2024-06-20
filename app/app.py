@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jun 12 15:21:58 2024
+Created on Tue Jun 18 16:06:35 2024
+
 @author: dduha
 """
 
@@ -221,7 +222,6 @@ with tab2:
     st.markdown("""
     #### 1. Tutor-Student Ratio
     - 1 tutor per 36 students
-    - Connect & live-online platform are sold together
     #### 2. Number of Students by School Size
     - Small: 2,500 students
     - Medium: 3,750 students
@@ -233,6 +233,7 @@ with tab2:
     - Customized platform: $1,000
     - Branded platform: $6,000
     - AI Insights: $7,500
+    - Connect & live-online platform are sold together
     #### 4. Scenario Assumptions (Adoption rates)
     The base case, worst case, and best case scenarios are based on the following assumptions for product adoption rates, where the worst case is 50% of the base case, and best case multipliers relative to the base case are listed in the table:
     | Product | Base Case | Worst Case | Best Case |
@@ -241,13 +242,15 @@ with tab2:
     | Customized platform | 5% | 2.5% | 7.5% |
     | Fully branded platform | 5% | 2.5% | 7.5% |
     | AI Insights | 1% | 0% | 3% |
-    #### 5. Expected Case
+    #### 5. Sales Mix
+    The app assumes that product sales will be made to different sized schools (or districts). The sales mix informs revenue calculations.
+    #### 6. Expected Case
     The expected case uses the concept of expected value to arrive at the most plausible outcome. It is calculated by taking the weighted average of all possible outcomes, where the weights are the probabilities of each scenario. This approach provides a balanced view that considers both the likelihood and impact of different scenarios.
     """)
 
 with tab3:
     st.write("### Formulas and Calculation Steps")
-    st.write("##### Based on User Inputs for Base Case, Assuming 100% sales to small schools")
+    st.write("##### Based on user inputs for base case, assuming 100% sales to small schools")
     
     st.markdown(f"""
     #### 1. Calculate the Number of Tutors
@@ -271,8 +274,9 @@ with tab3:
         "Product": ["Coach tutor training", "Customized platform", "Branded platform", "AI Insights"],
         "Multiplier": [f"{training_multiplier:.2f}", f"{customize_multiplier:.2f}", f"{branded_multiplier:.2f}", f"{ai_multiplier:.2f}"]
     }))
-    
+        
     st.markdown(f"""
+    #### 4. Product Revenue Calculations
     - **Revenue Calculations** (Base Case, Small School):
       - Connect = {cost["Connect"]}
       - Live on-line platform = {num_students["Small"] / students_per_tutor:.2f} × {cost["Live online platform /tutor"]} = {num_students["Small"] / students_per_tutor * cost["Live online platform /tutor"]:.2f}
@@ -281,13 +285,13 @@ with tab3:
       - Branded platform = {cost["Branded platform"]} × {branded_multiplier:.2f} = {cost["Branded platform"] * branded_multiplier:.2f}
       - AI Insights = {cost["AI Insights"]} × {ai_multiplier:.2f} = {cost["AI Insights"] * ai_multiplier:.2f}
 
-    #### 4. Calculate Average Revenue per Sale
+    #### 5. Calculate Average Revenue per Sale
     - **Formula**:
       Total Revenue per Sale = Connect + Live on-line platform + Coach tutor training + Customized platform + Branded platform +  AI Insights
     - **Calculation** (Base Case, Small School):
       Average Revenue per Sale = {cost["Connect"]} + {num_students["Small"] / students_per_tutor * cost["Live online platform /tutor"]:.2f} + {num_students["Small"] / students_per_tutor * cost["Coach-tutor training /tutor"] * training_multiplier:.2f} + {cost["Customized platform"] * customize_multiplier:.2f} + {cost["Branded platform"] * branded_multiplier:.2f} + {cost["AI Insights"] * ai_multiplier:.2f} = {cost["Connect"] + num_students["Small"] / students_per_tutor * cost["Live online platform /tutor"] + num_students["Small"] / students_per_tutor * cost["Coach-tutor training /tutor"] * training_multiplier + cost["Customized platform"] * customize_multiplier + cost["Branded platform"] * branded_multiplier + cost["AI Insights"] * ai_multiplier:.2f}
 
-    #### 5. Calculate Break-even Sales
+    #### 6. Calculate Break-even Sales
     - **Formula**:
       Break-even Sales = (Expenses + Profit) / Average revenue per sale
     - **Calculation** (Base Case, Small School):

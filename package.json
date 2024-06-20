@@ -1,5 +1,5 @@
 {
-    "name": "breakeven_sales",
+    "name": "breakeven_by_district",
     "version": "0.1.0",
     "main": "./build/electron/main.js",
     "scripts": {
